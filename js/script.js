@@ -29,4 +29,7 @@
     console.log('\npost order traverse');
     tree.traverse(exports.traversers.postOrderTraverse, print);
 
+    console.log(`\nmin key: ${tree.getMinKey()}`);
+    console.log(`max key: ${tree.getMaxKey()}`);
+
 }(window));

@@ -2,39 +2,61 @@
     'use strict';
 
     const internal = new WeakMap(),
+        constants = exports.nodeconstants,
         Node = exports.Node;
+
+    function minOrMaxKey(aNode, side) {
+        let node = aNode;
+
+        if (node) {
+
+            while (node && node[side] !== null) {
+                node = node[side];
+            }
+
+            return node.key;
+        }
+
+        return null;
+    }
 
     class BinarySearchTree {
 
         constructor() {
 
-            const properties = {
-                root: null
-            };
-
-            internal.set(this, properties);
+            internal.set(this, null);
         }
 
         insert(key) {
-            const properties = internal.get(this),
+            const rootNode = internal.get(this),
                 newNode = new Node(key);
 
-            if (properties.root === null) {
-                properties.root = newNode;
+            if (rootNode === null) {
+                internal.set(this, newNode);
             }
             else {
-                properties.root.insertNode(newNode);
+                rootNode.insertNode(newNode);
             }
 
             return this;
         }
 
         traverse(traverser, callback) {
-            const properties = internal.get(this);
+            const rootNode = internal.get(this);
 
-            if (properties.root !== null) {
-                properties.root.traverse(traverser, callback);
+            if (rootNode !== null) {
+                rootNode.traverse(traverser, callback);
             }
+        }
+
+        getMinKey() {
+            const rootNode = internal.get(this);
+            return minOrMaxKey(rootNode, constants.LEFT);
+        }
+
+        getMaxKey() {
+            const rootNode = internal.get(this);
+            return minOrMaxKey(rootNode, constants.RIGHT);
         }
     }
 

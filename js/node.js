@@ -2,8 +2,7 @@
     'use strict';
 
     const internal = new WeakMap(),
-        LEFT = 'left',
-        RIGHT = 'right';
+        constants = exports.nodeconstants;
 
     function _insertNodeBySide(node, side) {
         const properties = internal.get(this);
@@ -21,8 +20,8 @@
         constructor(key) {
             const properties = {
                 key: key,
-                [LEFT]: null,
-                [RIGHT]: null
+                [constants.LEFT]: null,
+                [constants.RIGHT]: null
             };
 
             internal.set(this, properties);
@@ -33,20 +32,20 @@
         }
 
         get left() {
-            return internal.get(this)[LEFT];
+            return internal.get(this)[constants.LEFT];
         }
 
         get right() {
-            return internal.get(this)[RIGHT];
+            return internal.get(this)[constants.RIGHT];
         }
 
         insertNode(newNode) {
 
             if (newNode.key < this.key) {
-                _insertNodeBySide.call(this, newNode, LEFT);
+                _insertNodeBySide.call(this, newNode, constants.LEFT);
             }
             else {
-                _insertNodeBySide.call(this, newNode, RIGHT);
+                _insertNodeBySide.call(this, newNode, constants.RIGHT);
             }
         }
 
