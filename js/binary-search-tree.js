@@ -20,6 +20,23 @@
         return null;
     }
 
+    function searchNode(node, key) {
+
+        if (node === null) {
+            return false;
+        }
+
+        if (key < node.key) {
+            return searchNode(node.left, key);
+        }
+        else if (key > node.key) {
+            return searchNode(node.right, key);
+        }
+        else {
+            return true;
+        }
+    }
+
     class BinarySearchTree {
 
         constructor() {
@@ -57,6 +74,10 @@
         getMaxKey() {
             const rootNode = internal.get(this);
             return minOrMaxKey(rootNode, constants.RIGHT);
+        }
+
+        search(key) {
+            return searchNode(internal.get(this), key);
         }
     }
 

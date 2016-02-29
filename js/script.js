@@ -32,4 +32,7 @@
     console.log(`\nmin key: ${tree.getMinKey()}`);
     console.log(`max key: ${tree.getMaxKey()}`);
 
+    console.log(`tree.search(1): ${tree.search(1)}`);
+    console.log(`tree.search(8): ${tree.search(8)}`);
+
 }(window));
