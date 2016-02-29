@@ -5,8 +5,8 @@
         constants = exports.nodeconstants,
         Node = exports.Node;
 
-    function minOrMaxKey(aNode, side) {
-        let node = aNode;
+    function minOrMaxKey(pNode, side) {
+        let node = pNode;
 
         if (node) {
 
@@ -27,14 +27,13 @@
         }
 
         if (key < node.key) {
-            return searchNode(node.left, key);
+            return searchNode(node[constants.LEFT], key);
         }
         else if (key > node.key) {
-            return searchNode(node.right, key);
+            return searchNode(node[constants.RIGHT], key);
         }
-        else {
-            return true;
-        }
+
+        return true;
     }
 
     class BinarySearchTree {
@@ -62,7 +61,7 @@
             const rootNode = internal.get(this);
 
             if (rootNode !== null) {
-                rootNode.traverse(traverser, callback);
+                traverser(rootNode, callback);
             }
         }
 
@@ -78,6 +77,14 @@
 
         search(key) {
             return searchNode(internal.get(this), key);
+        }
+
+        removeNodeWithKey(key) {
+            const rootNode = internal.get(this);
+
+            if (rootNode !== null) {
+                internal.set(this, rootNode.removeNodeWithKey(key));
+            }
         }
     }
 

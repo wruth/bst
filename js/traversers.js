@@ -4,13 +4,13 @@
     function inOrderTraverse(node, callback) {
 
         if (node.left) {
-            node.left.traverse(inOrderTraverse, callback);
+            inOrderTraverse(node.left, callback);
         }
 
         callback(node.key);
 
         if (node.right) {
-            node.right.traverse(inOrderTraverse, callback);
+            inOrderTraverse(node.right, callback);
         }
     }
 
@@ -19,29 +19,28 @@
         callback(node.key);
 
         if (node.left) {
-            node.left.traverse(preOrderTraverse, callback);
+            preOrderTraverse(node.left, callback);
         }
 
         if (node.right) {
-            node.right.traverse(preOrderTraverse, callback);
+            preOrderTraverse(node.right, callback);
         }
     }
 
     function postOrderTraverse(node, callback) {
 
         if (node.left) {
-            node.left.traverse(postOrderTraverse, callback);
+            postOrderTraverse(node.left, callback);
         }
 
         if (node.right) {
-            node.right.traverse(postOrderTraverse, callback);
+            postOrderTraverse(node.right, callback);
         }
 
         callback(node.key);
     }
 
     const traversers = {
-
         inOrderTraverse: inOrderTraverse,
         preOrderTraverse: preOrderTraverse,
         postOrderTraverse: postOrderTraverse
