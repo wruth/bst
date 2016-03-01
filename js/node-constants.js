@@ -9,4 +9,4 @@
     Object.freeze(constants);
 
     exports.nodeconstants = constants;
-}(window));
+}(window.BST || (window.BST = {})));

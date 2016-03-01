@@ -35,4 +35,4 @@
     console.log(`tree.search(1): ${tree.search(1)}`);
     console.log(`tree.search(8): ${tree.search(8)}`);
 
-}(window));
+}(window.BST || (window.BST = {})));

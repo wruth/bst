@@ -90,4 +90,4 @@
 
     exports.BinarySearchTree = BinarySearchTree;
 
-}(window));
+}(window.BST || (window.BST = {})));

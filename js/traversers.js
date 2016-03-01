@@ -48,4 +48,4 @@
 
     exports.traversers = traversers;
 
-}(window));
+}(window.BST || (window.BST = {})));

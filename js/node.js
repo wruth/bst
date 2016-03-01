@@ -116,4 +116,4 @@
     }
 
     exports.Node = Node;
-}(window));
+}(window.BST || (window.BST = {})));
